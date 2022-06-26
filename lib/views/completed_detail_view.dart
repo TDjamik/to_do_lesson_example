@@ -1,10 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:todo_app/models/todo_model.dart';
+import 'package:todo_app/screens/task_detail_screen.dart';
 import 'package:todo_app/services/theme_service.dart';
 
+import '../services/file_servce.dart';
+
 class CompletedDetailView extends StatefulWidget {
-  const CompletedDetailView({Key? key}) : super(key: key);
+  final List<ToDo> items;
+  const CompletedDetailView({Key? key, this.items = const <ToDo>[]}) : super(key: key);
 
   @override
   State<CompletedDetailView> createState() => _CompletedDetailViewState();
@@ -24,15 +28,9 @@ class _CompletedDetailViewState extends State<CompletedDetailView> {
     setState(() {
       isLoading = true;
     });
-    // TODO: you will write code to read notes
-    items = [
-      ToDo(taskName: "To do chayxana app", taskContent: "i write code for notification", category: "folder name", isImportant: true, isCompleted: true, createdDate: DateTime.now().toString()),
-      ToDo(taskName: "To do chayxana app", taskContent: "i write code for notification", category: "folder name", isImportant: false, isCompleted: true, createdDate: DateTime.now().toString()),
-      ToDo(taskName: "To do chayxana app", taskContent: "i write code for notification", category: "folder name", isImportant: true, isCompleted: true, createdDate: DateTime.now().toString()),
-      ToDo(taskName: "To do chayxana app", taskContent: "i write code for notification", category: "folder name", isImportant: false, isCompleted: true, createdDate: DateTime.now().toString()),
-      ToDo(taskName: "To do chayxana app", taskContent: "i write code for notification", category: "folder name", isImportant: false, isCompleted: true, createdDate: DateTime.now().toString()),
-      ToDo(taskName: "To do chayxana app", taskContent: "i write code for notification", category: "folder name", isImportant: true, isCompleted: true, createdDate: DateTime.now().toString()),
-    ];
+
+    items = widget.items;
+
     setState((){
       isLoading = false;
     });
@@ -50,6 +48,17 @@ class _CompletedDetailViewState extends State<CompletedDetailView> {
     setState((){
       toDo.isImportant = !toDo.isImportant;
     });
+  }
+
+  void _deleteToDo(int index) {
+    FileService.deleteToDo(items[index]);
+    setState(() {
+      items.removeAt(index);
+    });
+  }
+
+  void _openTaskDetailPage(ToDo toDo) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => TaskDetailScreen(toDo: toDo)));
   }
 
   @override
@@ -72,13 +81,10 @@ class _CompletedDetailViewState extends State<CompletedDetailView> {
                   color: ThemeService.colorPink,
                   child: const Icon(Icons.delete_outline, color: ThemeService.colorBackgroundLight,),
                 ),
-                onDismissed: (DismissDirection direction) {
-                  setState(() {
-                    items.removeAt(index);
-                  });
-                },
+                onDismissed: (DismissDirection direction) => _deleteToDo(index),
                 key: ValueKey<int>(toDo.hashCode),
                 child: ListTile(
+                  onTap: () => _openTaskDetailPage(toDo),
                   contentPadding: const EdgeInsets.only(left: 10),
                   leading: Checkbox(
                     value: toDo.isCompleted,

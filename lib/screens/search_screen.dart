@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:todo_app/services/theme_service.dart';
@@ -24,11 +22,11 @@ class SearchScreen extends SearchDelegateCustom {
   Widget? buildActions(BuildContext context) {
     return IconButton(
       color: ThemeService.colorBlack,
-        onPressed: () {
-          query = '';
-        },
-        icon: const Icon(CupertinoIcons.xmark,),
-      );
+      onPressed: () {
+        query = '';
+      },
+      icon: const Icon(CupertinoIcons.xmark,),
+    );
   }
 
   @override
@@ -91,7 +89,7 @@ class SearchScreen extends SearchDelegateCustom {
             alignment: Alignment.center,
             margin: const EdgeInsets.only(top: 5, left: 20, right: 20),
             child: ListTile(
-              contentPadding: EdgeInsets.only(bottom: 0, top: 0, left: 10, right: 20),
+              contentPadding: const EdgeInsets.only(bottom: 0, top: 0, left: 10, right: 20),
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(7.5)),
               leading: Checkbox(
                 onChanged: (value) {},
@@ -114,11 +112,11 @@ class SearchScreen extends SearchDelegateCustom {
   ThemeData appBarTheme(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     return theme.copyWith(
-      appBarTheme: theme.appBarTheme.copyWith(
-        toolbarHeight: 100,
-        elevation: 0.0,
-        backgroundColor: ThemeService.colorBackgroundLight
-      )
+        appBarTheme: theme.appBarTheme.copyWith(
+            toolbarHeight: 100,
+            elevation: 0.0,
+            backgroundColor: ThemeService.colorBackgroundLight
+        )
     );
   }
 }

@@ -1,7 +1,7 @@
 class ToDo {
   String taskName;
   String taskContent;
-  Object category;
+  String category;
   bool isImportant;
   bool isCompleted;
   String createdDate;
@@ -26,7 +26,8 @@ class ToDo {
         createdDate = json["craetedDate"],
         dueDate = json["dueDate"];
 
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() =>
+      {
         'taskName': taskName,
         'taskContent': taskContent,
         'category': category,
@@ -54,8 +55,13 @@ class ToDo {
   }
 
   @override
-  int get hashCode => Object.hash(taskName, taskContent, category, isImportant,
-      isCompleted, createdDate, dueDate);
-
-  // compare to
+  int get hashCode =>
+      Object.hash(
+          taskName,
+          taskContent,
+          category,
+          isImportant,
+          isCompleted,
+          createdDate,
+          dueDate);
 }

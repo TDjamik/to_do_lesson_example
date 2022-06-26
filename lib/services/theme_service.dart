@@ -89,11 +89,11 @@ class ThemeService {
 
   /// color: 1C1B1F; opacity: 16%
   static final Color colorBottomTextField =
-      const Color(0xFF1C1B1F).withOpacity(0.16);
+  const Color(0xFF1C1B1F).withOpacity(0.16);
 
   /// color: 1C1B1F; opacity: 38%
   static final Color colorUnselected =
-      const Color(0xFF1C1B1F).withOpacity(0.38);
+  const Color(0xFF1C1B1F).withOpacity(0.38);
 
   /// color: 1C1B1F; opacity: 60%
   static final Color colorSubtitle = const Color(0xFF1C1B1F).withOpacity(0.60);

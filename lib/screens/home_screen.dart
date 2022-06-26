@@ -83,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
       builder: (context) {
         return AlertDialog(
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(28)),
+          RoundedRectangleBorder(borderRadius: BorderRadius.circular(28)),
           title: Text("new_list".tr),
           content: Container(
             color: ThemeService.colorTextFieldBack,
@@ -136,8 +136,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _openDetailPage(String path) {
-    // TODO: concrete updated => provide path of DetailScreen
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => const DetailScreen()));
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => DetailScreen(path: path,)));
   }
 
   @override
@@ -181,39 +180,39 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SafeArea(
         child: ListView(
             children: [
-          HomeItem(
-              iconColor: ThemeService.colorPink,
-              icon: Icons.star_outlined,
-              title: "important".tr,
-              onPressed: () {}),
-          HomeItem(
-              iconColor: ThemeService.colorMain,
-              imageIcon: "assets/icons/ic_home.png",
-              title: "tasks".tr,
-              onPressed: () {}),
-          Divider(
-            height: 4,
-            thickness: 2,
-            endIndent: MediaQuery.of(context).size.width * 0.04,
-            indent: MediaQuery.of(context).size.width * 0.04,
-          ),
+              HomeItem(
+                  iconColor: ThemeService.colorPink,
+                  icon: Icons.star_outlined,
+                  title: "important".tr,
+                  onPressed: () {}),
+              HomeItem(
+                  iconColor: ThemeService.colorMain,
+                  imageIcon: "assets/icons/ic_home.png",
+                  title: "tasks".tr,
+                  onPressed: () {}),
+              Divider(
+                height: 4,
+                thickness: 2,
+                endIndent: MediaQuery.of(context).size.width * 0.04,
+                indent: MediaQuery.of(context).size.width * 0.04,
+              ),
 
-          ListView.builder(
-            physics: const NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            itemCount: listDirectory.length,
-            itemBuilder: (context, index) {
-              String currentPath = listDirectory[index].path;
-              String title = currentPath.substring(currentPath.lastIndexOf("/") + 1);
-              return HomeItem(
-                  iconColor: ThemeService.colorMainTask,
-                  icon: Icons.list,
-                  title: title,
-                  onPressed: () => _openDetailPage(currentPath),
-              );
-            },
-          ),
-        ]),
+              ListView.builder(
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: listDirectory.length,
+                itemBuilder: (context, index) {
+                  String currentPath = listDirectory[index].path;
+                  String title = currentPath.substring(currentPath.lastIndexOf("/") + 1);
+                  return HomeItem(
+                    iconColor: ThemeService.colorMainTask,
+                    icon: Icons.list,
+                    title: title,
+                    onPressed: () => _openDetailPage(currentPath),
+                  );
+                },
+              ),
+            ]),
       ),
       floatingActionButton: TextButton.icon(
         onPressed: _showDialog,

@@ -1,9 +1,9 @@
 class User {
   late String fullName;
   late String email;
-  
+
   User(this.fullName, this.email);
-  
+
   User.fromJson(Map<String, dynamic> json) {
     fullName = json["fullName"];
     email = json["email"];

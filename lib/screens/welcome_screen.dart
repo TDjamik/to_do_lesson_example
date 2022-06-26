@@ -26,12 +26,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Expanded(
-                flex: 3,
-                child: Container(
-                  margin: const EdgeInsets.only(top: 40, left: 30, right: 30),
-                  child: Lottie.asset("assets/lotties/succes.json",
-                      repeat: false, reverse: false),
-                ),
+              flex: 3,
+              child: Container(
+                margin: const EdgeInsets.only(top: 40, left: 30, right: 30),
+                child: Lottie.asset("assets/lotties/succes.json",
+                    repeat: false, reverse: false),
+              ),
             ),
             Expanded(
                 flex: 2,

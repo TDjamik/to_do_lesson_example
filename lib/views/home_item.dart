@@ -9,30 +9,28 @@ class HomeItem extends StatelessWidget {
   Function onPressed;
   HomeItem(
       {Key? key,
-      this.imageIcon,
-      this.iconColor = Colors.grey,
-      this.icon,
-      required this.title,
-      required this.onPressed})
+        this.imageIcon,
+        this.iconColor = Colors.grey,
+        this.icon,
+        required this.title,
+        required this.onPressed})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
       leading: icon == null
-          ? Container(
-              child: Image.asset(
-                imageIcon ?? "",
-                width: 20,
-                height: 20,
-                fit: BoxFit.cover,
-                color: iconColor ?? Colors.grey,
-              ),
-            )
+          ? Image.asset(
+        imageIcon ?? "",
+        width: 20,
+        height: 20,
+        fit: BoxFit.cover,
+        color: iconColor ?? Colors.grey,
+      )
           : Icon(
-              icon,
-              color: iconColor ?? Colors.grey,
-            ),
+        icon,
+        color: iconColor ?? Colors.grey,
+      ),
       title: Text(title),
       trailing: IconButton(
         onPressed: () => onPressed(),

@@ -75,7 +75,7 @@ abstract class SearchDelegateCustom<T> {
 
   void showSuggestions(BuildContext context) {
     assert(_focusNode != null,
-        '_focusNode must be set by route before showSuggestions is called.');
+    '_focusNode must be set by route before showSuggestions is called.');
     _focusNode!.requestFocus();
     _currentBody = _SearchBody.suggestions;
   }
@@ -105,10 +105,10 @@ abstract class SearchDelegateCustom<T> {
   final TextEditingController _queryTextController = TextEditingController();
 
   final ProxyAnimation _proxyAnimation =
-      ProxyAnimation(kAlwaysDismissedAnimation);
+  ProxyAnimation(kAlwaysDismissedAnimation);
 
   final ValueNotifier<_SearchBody?> _currentBodyNotifier =
-      ValueNotifier<_SearchBody?>(null);
+  ValueNotifier<_SearchBody?>(null);
 
   _SearchBody? get _currentBody => _currentBodyNotifier.value;
 
@@ -129,10 +129,10 @@ class _SearchPageRoute<T> extends PageRoute<T> {
     required this.delegate,
   }) : assert(delegate != null) {
     assert(
-      delegate._route == null,
-      'The ${delegate.runtimeType} instance is currently used by another active '
-      'search. Please close that search by calling close() on the SearchDelegateCustom '
-      'before opening another search with the same delegate instance.',
+    delegate._route == null,
+    'The ${delegate.runtimeType} instance is currently used by another active '
+        'search. Please close that search by calling close() on the SearchDelegateCustom '
+        'before opening another search with the same delegate instance.',
     );
     delegate._route = this;
   }
@@ -153,11 +153,11 @@ class _SearchPageRoute<T> extends PageRoute<T> {
 
   @override
   Widget buildTransitions(
-    BuildContext context,
-    Animation<double> animation,
-    Animation<double> secondaryAnimation,
-    Widget child,
-  ) {
+      BuildContext context,
+      Animation<double> animation,
+      Animation<double> secondaryAnimation,
+      Widget child,
+      ) {
     return FadeTransition(
       opacity: animation,
       child: child,
@@ -173,10 +173,10 @@ class _SearchPageRoute<T> extends PageRoute<T> {
 
   @override
   Widget buildPage(
-    BuildContext context,
-    Animation<double> animation,
-    Animation<double> secondaryAnimation,
-  ) {
+      BuildContext context,
+      Animation<double> animation,
+      Animation<double> secondaryAnimation,
+      ) {
     return _SearchPage<T>(
       delegate: delegate,
       animation: animation,
@@ -328,7 +328,7 @@ class _SearchPageState<T> extends State<_SearchPage<T>> {
               children: [
                 Expanded(
                   flex: 1,
-                    child: widget.delegate.buildLeading(context)!,
+                  child: widget.delegate.buildLeading(context)!,
                 ),
                 const Expanded(
                   flex: 1,
